@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View.BookingDetailsActivity"
+	>
+
+	<LinearLayout
+		android:id="@+id/titleLayout"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:padding="20dp"
+		android:orientation="vertical"
+		android:background="@android:color/darker_gray"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		>
+
+		<TextView
+			android:id="@+id/tvTitle"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:maxLines="3"
+			android:ellipsize="end"
+			android:text="Rekayasa Perangkat Linak Kelas Informatika 13"
+			android:textSize="25sp"
+			android:textColor="@android:color/white"
+			/>
+
+		<TextView
+			android:id="@+id/tvLongDate"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:maxLines="1"
+			android:ellipsize="end"
+			android:text="Kamis, 26 Desember 2020"
+			android:textColor="@android:color/white"
+			/>
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:padding="10dp"
+		app:layout_constraintTop_toBottomOf="@id/titleLayout"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		>
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			>
+			<androidx.cardview.widget.CardView
+				android:layout_width="match_parent"
+				android:layout_height="100dp"
+				android:layout_gravity="start"
+				android:layout_weight=".50"
+				android:padding="2dp"
+				>
+
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="100dp"
+					android:orientation="vertical"
+					android:padding="15dp"
+					android:background="@drawable/border"
+					>
+
+					<TextView
+						android:id="@+id/tvRoom"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="5.2.3"
+						android:layout_gravity="center"
+						android:textSize="25sp"
+						/>
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="Ruang"
+						android:layout_gravity="center"
+						android:textSize="18sp"
+						/>
+				</LinearLayout>
+			</androidx.cardview.widget.CardView>
+
+			<androidx.cardview.widget.CardView
+				android:layout_width="match_parent"
+				android:layout_height="100dp"
+				android:layout_gravity="end"
+				android:layout_weight=".50"
+				android:padding="2dp"
+				>
+
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="100dp"
+					android:orientation="vertical"
+					android:padding="10dp"
+					android:background="@drawable/border"
+					>
+
+					<TextView
+						android:id="@+id/tvStatus"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="Pending"
+						android:textColor="#FFC107"
+						android:layout_gravity="center"
+						android:textSize="25sp"
+						/>
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="Status"
+						android:layout_gravity="center"
+						android:textSize="18sp"
+						/>
+				</LinearLayout>
+			</androidx.cardview.widget.CardView>
+
+
+
+		</LinearLayout>
+
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			>
+			<androidx.cardview.widget.CardView
+				android:layout_width="match_parent"
+				android:layout_height="100dp"
+				android:layout_gravity="start"
+				android:layout_weight=".50"
+				android:padding="2dp"
+				>
+
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="100dp"
+					android:orientation="vertical"
+					android:padding="15dp"
+					android:background="@drawable/border"
+					>
+
+					<TextView
+						android:id="@+id/tvDate"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="28 Okt 2020"
+						android:layout_gravity="center"
+						android:textSize="25dp"
+						/>
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="Tanggal"
+						android:layout_gravity="center"
+						android:textSize="18dp"
+						/>
+
+				</LinearLayout>
+			</androidx.cardview.widget.CardView>
+
+			<androidx.cardview.widget.CardView
+				android:layout_width="match_parent"
+				android:layout_height="100dp"
+				android:layout_gravity="end"
+				android:layout_weight=".50"
+				android:padding="2dp"
+				>
+
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="100dp"
+					android:orientation="vertical"
+					android:padding="10dp"
+					android:background="@drawable/border"
+					>
+
+					<TextView
+						android:id="@+id/tvTime"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="07:00 - 08:40"
+						android:layout_gravity="center"
+						android:textSize="25dp"
+						/>
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="Sesi"
+						android:layout_gravity="center"
+						android:textSize="18dp"
+						/>
+				</LinearLayout>
+			</androidx.cardview.widget.CardView>
+
+
+
+		</LinearLayout>
+	</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
