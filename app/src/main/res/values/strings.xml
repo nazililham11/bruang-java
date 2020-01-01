@@ -1,3 +1,32 @@
 <resources>
+
 	<string name="app_name">BRUANG</string>
+	<string name="short_desc">Booking Ruang AMIKOM</string>
+
+	<string name="login_label">LOGIN</string>
+	<string name="username_label">Username</string>
+	<string name="password_label">Password</string>
+
+	<!--Error Message-->
+	<string name="error_username_wrong">Wrong Username</string>
+	<string name="error_username_empty">Username Cant be Empty</string>
+	<string name="error_username_length">Username Length Must More Than 4 Characters</string>
+
+	<string name="error_password_wrong">Wrong Password</string>
+	<string name="error_password_empty">Password Cant be Empty</string>
+	<string name="error_password_length">Password Length Must More Than 4 Characters</string>
+
+	<string name="error_no_internet_connection">Tidak dapat terhubung ke server, periksa koneksi internet anda dan cobalah beberapa saat lagi</string>
+
+	<string name="undefinied_label">undefinied</string>
+	<string name="room_label">Room</string>
+
+	<string name="booking_status_accepted_label">Accepted</string>
+	<string name="booking_status_rejected_label">Rejected</string>
+	<string name="booking_status_pending_label">Pending</string>
+
+	<string name="new_booking_button_label">Booking Ruang</string>
+	<string name="title_activity_home">HomeActivity</string>
+
+
 </resources>
