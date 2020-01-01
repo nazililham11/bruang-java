@@ -1,22 +1,34 @@
 package com.bruang.bookingruang.Model;
 
 import com.bruang.bookingruang.Enum.LoginError;
+import com.google.gson.Gson;
+import com.google.gson.annotations.SerializedName;
 
 public class User {
 
-    private String username, password;
+    @SerializedName("user_id")
+    private String user_id;
 
-    public User(String username, String password){
-        this.username = username;
+    @SerializedName("password")
+    private String password;
+
+    @SerializedName("name")
+    private String name;
+
+    @SerializedName("token")
+    private String token;
+
+    public User(String user_id, String password) {
+        this.user_id = user_id;
         this.password = password;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUser_id() {
+        return user_id;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
     }
 
     public String getPassword() {
@@ -27,12 +39,28 @@ public class User {
         this.password = password;
     }
 
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public LoginError isValid(){
 
-        if (username.isEmpty())
+        if (user_id.isEmpty())
             return LoginError.UsernameEmptyError;
 
-        if (username.length() < 4)
+        if (user_id.length() < 4)
             return LoginError.UsernameLengthError;
 
         if (password.isEmpty())
@@ -42,6 +70,12 @@ public class User {
             return LoginError.PasswordLengthError;
 
         return LoginError.None;
+    }
+
+    @Override
+    public String toString(){
+        Gson gson = new Gson();
+        return gson.toJson(this);
     }
 
 }
