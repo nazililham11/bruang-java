@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:maxWidth="500dp"
 	android:layout_gravity="center"
-	tools:context=".View.Login.LoginActivity"
+	tools:context=".View.LoginActivity"
 	>
 
 	<LinearLayout
@@ -108,7 +108,6 @@
 				android:textColor="@android:color/holo_red_light"
 				android:paddingStart="5dp"
 				android:paddingEnd="5dp"
-				android:text="@string/default_username_error"
 				/>
 
 		</LinearLayout>
@@ -147,7 +146,6 @@
 				android:textColor="@android:color/holo_red_light"
 				android:paddingStart="5dp"
 				android:paddingEnd="5dp"
-				android:text="@string/default_password_error"
 				/>
 
 		</LinearLayout>

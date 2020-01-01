@@ -1,4 +1,6 @@
-package com.bruang.bookingruang.View.Login;
+package com.bruang.bookingruang.View;
+
+import android.content.Context;
 
 import com.bruang.bookingruang.Enum.LoginError;
 
@@ -10,4 +12,9 @@ public interface ILoginView {
 
     void onLoginSuccess();
 
+    void onLoginFailed();
+
+    void runOnUiThread(Runnable result);
+
+    Context getApplicationContext();
 }

@@ -1,45 +1,51 @@
-package com.bruang.bookingruang.View.Login;
+package com.bruang.bookingruang.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bruang.bookingruang.Enum.LoginError;
 import com.bruang.bookingruang.Model.User;
 import com.bruang.bookingruang.Presenter.LoginPresenter;
 import com.bruang.bookingruang.R;
-import com.bruang.bookingruang.View.Home.HomeActivity;
 
 public class LoginActivity extends AppCompatActivity implements ILoginView {
 
-    Button button;
-    TextView tvUsernameError, tvPasswordError;
-    EditText etUsername, etPassword;
-    LoginPresenter loginPresenter;
+    private Button btnLogin;
+    private TextView tvUsernameError, tvPasswordError;
+    private EditText etUsername, etPassword;
+    private LoginPresenter loginPresenter;
+    private boolean doubleBackToExitPressedOnce;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        button     = findViewById(R.id.btnLogin);
+        bindToView();
+
+        loginPresenter = new LoginPresenter(this);
+        btnLogin.setOnClickListener(v -> onLogin());
+
+    }
+
+    private void bindToView() {
+        btnLogin   = findViewById(R.id.btnLogin);
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
         tvUsernameError = findViewById(R.id.tvUsernameError);
         tvPasswordError = findViewById(R.id.tvPasswordError);
-
-        loginPresenter = new LoginPresenter(this);
-
-        button.setOnClickListener(v -> proceedLogin());
-
     }
 
-    private void proceedLogin(){
+    private void onLogin(){
+        btnLogin.setEnabled(false);
 
         setUsernameError(LoginError.None);
         setPasswordError(LoginError.None);
@@ -47,7 +53,6 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
         String username = etUsername.getText().toString().trim();
         String password = etPassword.getText().toString();
 
-        etPassword.setText("");
         loginPresenter.onLogin(new User(username, password));
 
     }
@@ -57,8 +62,31 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
     }
 
     @Override
+    public void onBackPressed() {
+
+        if (doubleBackToExitPressedOnce) {
+            finishAffinity(); // Close all activites
+            System.exit(0);  // Releasing resources
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(() -> doubleBackToExitPressedOnce=false, 2000);
+    }
+
+    @Override
     public void onLoginSuccess() {
+        btnLogin.setEnabled(true);
         navigateToHome();
+        etPassword.setText("");
+    }
+
+    @Override
+    public void onLoginFailed() {
+        btnLogin.setEnabled(true);
+        etPassword.setText("");
     }
 
     @Override
