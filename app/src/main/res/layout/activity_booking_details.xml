@@ -1,221 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".View.BookingDetailsActivity"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/colorPrimary"
+	tools:context=".View.BookingDetailsActivity"
 	>
 
 	<LinearLayout
 		android:id="@+id/titleLayout"
-		android:layout_width="match_parent"
+		android:layout_width="250dp"
 		android:layout_height="wrap_content"
-		android:padding="20dp"
 		android:orientation="vertical"
-		android:background="@android:color/darker_gray"
-		app:layout_constraintTop_toTopOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
+		android:layout_marginBottom="150dp"
+		android:padding="20dp"
+		app:layout_constraintBottom_toTopOf="@+id/linearLayout"
 		app:layout_constraintEnd_toEndOf="parent"
-		>
+		app:layout_constraintHorizontal_bias="0.17"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent">
 
 		<TextView
 			android:id="@+id/tvTitle"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:maxLines="3"
 			android:ellipsize="end"
-			android:text="Rekayasa Perangkat Linak Kelas Informatika 13"
-			android:textSize="25sp"
+			android:maxLines="3"
+			android:text="Rekayasa Perangkat Lunak S1-IF 13"
 			android:textColor="@android:color/white"
+			android:textSize="25sp"
+			android:textStyle="bold"
 			/>
 
 		<TextView
 			android:id="@+id/tvLongDate"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:maxLines="1"
 			android:ellipsize="end"
+			android:maxLines="1"
 			android:text="Kamis, 26 Desember 2020"
-			android:textColor="@android:color/white"
+			android:textSize="19sp"
+			android:textColor="@android:color/white" />
+
+	</LinearLayout>
+
+	<ImageView
+		android:layout_width="150dp"
+		android:layout_height="100dp"
+		android:src="@drawable/logo"
+		android:layout_marginBottom="160dp"
+		app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+		app:layout_constraintStart_toEndOf="@+id/titleLayout"
+		app:layout_constraintTop_toTopOf="parent"/>
+
+	<TextView
+		android:id="@+id/tvStatus"
+		android:layout_width="150dp"
+		android:layout_height="150dp"
+		android:layout_marginBottom="170dp"
+		android:background="@drawable/acc"
+		android:gravity="center"
+		android:text="Accepted"
+		android:textColor="@android:color/white"
+		android:textSize="25sp"
+		android:textStyle="bold"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		/>
+
+	<LinearLayout
+		android:id="@+id/linearLayout"
+		android:layout_width="match_parent"
+		android:layout_height="350dp"
+		android:background="@drawable/bg_details"
+		android:layout_marginStart="30dp"
+		android:layout_marginEnd="30dp"
+		android:orientation="vertical"
+		android:paddingStart="30dp"
+		android:paddingEnd="30dp"
+		android:paddingTop="50dp"
+		android:paddingBottom="40dp"
+		app:layout_constraintBottom_toBottomOf="parent"
+		>
+
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="Ruang"
+			android:textColor="@color/black"
+			android:textSize="18sp"
+			/>
+
+		<TextView
+			android:id="@+id/tvRoom"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="5.2.3"
+			android:textColor="@color/black"
+			android:textSize="30sp"
+			android:layout_marginBottom="10dp"
+			/>
+
+		<View
+			android:layout_width="match_parent"
+			android:layout_height="1dp"
+			android:background="@color/black"
+			android:layout_marginBottom="30dp"/>
+
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="Sesi"
+			android:textColor="@color/black"
+			android:textSize="18sp"
+			/>
+
+		<TextView
+			android:id="@+id/tvTime"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="07.00 - 08.40"
+			android:textColor="@color/black"
+			android:textSize="30sp"
+			android:layout_marginBottom="10dp"
+			/>
+
+		<View
+			android:layout_width="match_parent"
+			android:layout_height="1dp"
+			android:background="@color/black"
+			android:layout_marginBottom="30dp"
 			/>
 
 	</LinearLayout>
 
-	<LinearLayout
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:orientation="vertical"
-		android:padding="10dp"
-		app:layout_constraintTop_toBottomOf="@id/titleLayout"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintEnd_toEndOf="parent"
-		>
 
-		<LinearLayout
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:orientation="horizontal"
-			>
-			<androidx.cardview.widget.CardView
-				android:layout_width="match_parent"
-				android:layout_height="100dp"
-				android:layout_gravity="start"
-				android:layout_weight=".50"
-				android:padding="2dp"
-				>
-
-
-				<LinearLayout
-					android:layout_width="match_parent"
-					android:layout_height="100dp"
-					android:orientation="vertical"
-					android:padding="15dp"
-					android:background="@drawable/border"
-					>
-
-					<TextView
-						android:id="@+id/tvRoom"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:text="5.2.3"
-						android:layout_gravity="center"
-						android:textSize="25sp"
-						/>
-
-					<TextView
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:text="Ruang"
-						android:layout_gravity="center"
-						android:textSize="18sp"
-						/>
-				</LinearLayout>
-			</androidx.cardview.widget.CardView>
-
-			<androidx.cardview.widget.CardView
-				android:layout_width="match_parent"
-				android:layout_height="100dp"
-				android:layout_gravity="end"
-				android:layout_weight=".50"
-				android:padding="2dp"
-				>
-
-
-				<LinearLayout
-					android:layout_width="match_parent"
-					android:layout_height="100dp"
-					android:orientation="vertical"
-					android:padding="10dp"
-					android:background="@drawable/border"
-					>
-
-					<TextView
-						android:id="@+id/tvStatus"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:text="Pending"
-						android:textColor="#FFC107"
-						android:layout_gravity="center"
-						android:textSize="25sp"
-						/>
-
-					<TextView
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:text="Status"
-						android:layout_gravity="center"
-						android:textSize="18sp"
-						/>
-				</LinearLayout>
-			</androidx.cardview.widget.CardView>
-
-
-
-		</LinearLayout>
-
-
-		<LinearLayout
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:orientation="horizontal"
-			>
-			<androidx.cardview.widget.CardView
-				android:layout_width="match_parent"
-				android:layout_height="100dp"
-				android:layout_gravity="start"
-				android:layout_weight=".50"
-				android:padding="2dp"
-				>
-
-
-				<LinearLayout
-					android:layout_width="match_parent"
-					android:layout_height="100dp"
-					android:orientation="vertical"
-					android:padding="15dp"
-					android:background="@drawable/border"
-					>
-
-					<TextView
-						android:id="@+id/tvDate"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:text="28 Okt 2020"
-						android:layout_gravity="center"
-						android:textSize="25dp"
-						/>
-
-					<TextView
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:text="Tanggal"
-						android:layout_gravity="center"
-						android:textSize="18dp"
-						/>
-
-				</LinearLayout>
-			</androidx.cardview.widget.CardView>
-
-			<androidx.cardview.widget.CardView
-				android:layout_width="match_parent"
-				android:layout_height="100dp"
-				android:layout_gravity="end"
-				android:layout_weight=".50"
-				android:padding="2dp"
-				>
-
-
-				<LinearLayout
-					android:layout_width="match_parent"
-					android:layout_height="100dp"
-					android:orientation="vertical"
-					android:padding="10dp"
-					android:background="@drawable/border"
-					>
-
-					<TextView
-						android:id="@+id/tvTime"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:text="07:00 - 08:40"
-						android:layout_gravity="center"
-						android:textSize="25dp"
-						/>
-
-					<TextView
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:text="Sesi"
-						android:layout_gravity="center"
-						android:textSize="18dp"
-						/>
-				</LinearLayout>
-			</androidx.cardview.widget.CardView>
-
-
-
-		</LinearLayout>
-	</LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

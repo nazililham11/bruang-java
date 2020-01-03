@@ -40,14 +40,13 @@ public class HomePresenter {
 
                 if (response.isSuccessful()){
                     if (response.body().getStatus().equals("success")){
-                        String msg = "Welcome " + user.getName();
                         List<Booking> bookingList = response.body().getBookings();
-                        Log.d("Response", msg);
                         homeView.loadBookings(bookingList);
                     } else {
                         String message = response.body().getMessage();
                         if (!TextUtils.isEmpty(message)) {
-                            Toast.makeText(App.getInstance().getApplicationContext(), message, Toast.LENGTH_LONG);
+//                            Toast.makeText(App.getInstance().getApplicationContext(), message,
+//                                    Toast.LENGTH_LONG).show();
                         }
                     }
                 } else {

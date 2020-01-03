@@ -40,29 +40,22 @@ public class HomeActivity extends AppCompatActivity implements IHomeView,
 
         FloatingActionButton fab = findViewById(R.id.add);
         fab.setOnClickListener(v -> newBooking());
-//        {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
 
         presenter = new HomePresenter(this);
         presenter.getBookingList(App.getActiveUser());
     }
 
     private void newBooking() {
-//        startActivity(new Intent(this, NewBookingFilterActivity.class));
+        startActivity(new Intent(this, SelectDatesActivity.class));
     }
 
     @Override
     public void onItemClick(View view, int position) {
-        Toast.makeText(this,
-                String.format("You clicked %s on row number %d",
-                        adapter.getItem(position).getTitle(),
-                        position),
-                Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this,
+//                String.format("You clicked %s on row number %d",
+//                        adapter.getItem(position).getTitle(),
+//                        position),
+//                Toast.LENGTH_SHORT).show();
 
         Booking booking = adapter.getItem(position);
 

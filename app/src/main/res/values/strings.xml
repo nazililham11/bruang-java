@@ -16,7 +16,7 @@
 	<string name="error_password_empty">Password Cant be Empty</string>
 	<string name="error_password_length">Password Length Must More Than 4 Characters</string>
 
-	<string name="error_no_internet_connection">Tidak dapat terhubung ke server, periksa koneksi internet anda dan cobalah beberapa saat lagi</string>
+	<string name="error_no_internet_connection">Unable to connect to server, check your internet connection and try again later</string>
 
 	<string name="undefinied_label">undefinied</string>
 	<string name="room_label">Room</string>
@@ -28,5 +28,9 @@
 	<string name="new_booking_button_label">Booking Ruang</string>
 	<string name="title_activity_home">HomeActivity</string>
 
+	<string name="error_maximum_selected_date">The selected date cannot be more than 5</string>
+	<string name="error_sunday_selected_date">Can\'t choose Sunday</string>
+
+	<string name="back_twice_to_exit_label">Please click BACK again to exit</string>
 
 </resources>

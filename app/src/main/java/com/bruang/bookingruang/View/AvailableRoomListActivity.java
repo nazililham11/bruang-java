@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.bruang.bookingruang.Adapter.AvailableRoomAdapter;
@@ -34,6 +35,7 @@ public class AvailableRoomListActivity extends AppCompatActivity
 
     private ApiInterface mApiInterface;
     private AvailableRoomAdapter adapter;
+    private Button btnBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +56,9 @@ public class AvailableRoomListActivity extends AppCompatActivity
             if (rooms != null)
                 getRoomsList(rooms);
         }
+
+        btnBack = findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(v -> onBackPressed());
 
     }
 
@@ -90,8 +95,8 @@ public class AvailableRoomListActivity extends AppCompatActivity
                     } else {
                         String message = response.body().getMessage();
                         if (!TextUtils.isEmpty(message)) {
-                            Toast.makeText(App.getInstance().getApplicationContext(), message,
-                                    Toast.LENGTH_LONG).show();
+//                            Toast.makeText(App.getInstance().getApplicationContext(), message,
+//                                    Toast.LENGTH_LONG).show();
                             Log.d("Response Msg", response.body().getMessage());
 
                         }
@@ -110,10 +115,10 @@ public class AvailableRoomListActivity extends AppCompatActivity
 
     @Override
     public void onItemClick(View view, int position) {
-        Toast.makeText(this,
-                String.format("You clicked %s on row number %d",
-                        String.format("%s At %s", adapter.getItem(position).getRoom().getFullRoomNumber(), adapter.getItem(position).getClassSession().getTimeLabel()),
-                        position),Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this,
+//                String.format("You clicked %s on row number %d",
+//                        String.format("%s At %s", adapter.getItem(position).getRoom().getFullRoomNumber(), adapter.getItem(position).getClassSession().getTimeLabel()),
+//                        position),Toast.LENGTH_SHORT).show();
 
         ClassSchedule schedule = adapter.getItem(position);
 

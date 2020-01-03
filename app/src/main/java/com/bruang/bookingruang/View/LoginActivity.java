@@ -11,17 +11,18 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bruang.bookingruang.Contract.LoginContract;
 import com.bruang.bookingruang.Enum.LoginError;
 import com.bruang.bookingruang.Model.User;
 import com.bruang.bookingruang.Presenter.LoginPresenter;
 import com.bruang.bookingruang.R;
 
-public class LoginActivity extends AppCompatActivity implements ILoginView {
+public class LoginActivity extends AppCompatActivity implements LoginContract.View {
 
     private Button btnLogin;
     private TextView tvUsernameError, tvPasswordError;
     private EditText etUsername, etPassword;
-    private LoginPresenter loginPresenter;
+    private LoginContract.Presenter loginPresenter;
     private boolean doubleBackToExitPressedOnce;
 
     @Override
@@ -47,11 +48,12 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
     private void onLogin(){
         btnLogin.setEnabled(false);
 
+        String username = etUsername.getText().toString().trim();
+        String password = etPassword.getText().toString();
+
         setUsernameError(LoginError.None);
         setPasswordError(LoginError.None);
 
-        String username = etUsername.getText().toString().trim();
-        String password = etPassword.getText().toString();
 
         loginPresenter.onLogin(new User(username, password));
 
@@ -65,31 +67,31 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
     public void onBackPressed() {
 
         if (doubleBackToExitPressedOnce) {
-            finishAffinity(); // Close all activites
-            System.exit(0);  // Releasing resources
+            finishAffinity();
+            System.exit(0);
             return;
         }
 
         this.doubleBackToExitPressedOnce = true;
-        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+        Toast.makeText(this,
+                getString(R.string.back_twice_to_exit_label),
+                Toast.LENGTH_SHORT).show();
 
         new Handler().postDelayed(() -> doubleBackToExitPressedOnce=false, 2000);
     }
 
-    @Override
     public void onLoginSuccess() {
         btnLogin.setEnabled(true);
         navigateToHome();
         etPassword.setText("");
     }
 
-    @Override
     public void onLoginFailed() {
         btnLogin.setEnabled(true);
         etPassword.setText("");
     }
 
-    @Override
     public void setUsernameError(LoginError error){
         String errorMsg;
 
@@ -109,18 +111,14 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
 
         tvUsernameError.setText(errorMsg);
         tvUsernameError.setVisibility(!error.equals(LoginError.None) ? View.VISIBLE : View.GONE);
-
+        onLoginFailed();
     }
 
-    @Override
     public void setPasswordError(LoginError error){
 
         String errorMsg;
 
         switch (error){
-            case None:
-                errorMsg = "";
-                break;
             case PasswordWrongError:
                 errorMsg = getString(R.string.error_password_wrong);
                 break;
@@ -135,8 +133,9 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
         }
 
         tvPasswordError.setText(errorMsg);
-        tvPasswordError.setVisibility(!error.equals(LoginError.None) ? View.VISIBLE : View.GONE);
-
+        tvPasswordError.setVisibility(!error.equals(LoginError.None) ?
+                                        View.VISIBLE : View.GONE);
+        onLoginFailed();
     }
 
 }

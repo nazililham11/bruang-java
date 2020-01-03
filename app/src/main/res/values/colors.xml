@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<color name="colorPrimary">#008577</color>
-	<color name="colorPrimaryDark">#00574B</color>
-	<color name="colorAccent">#D81B60</color>
+<!--	<color name="colorPrimary">#008577</color>-->
+<!--	<color name="colorPrimaryDark">#00574B</color>-->
+	<color name="colorAccent">#4009df</color>
+
+	<color name="colorPrimaryDark">#4009df</color>
+	<color name="colorPrimary">#5421e2</color>
+
+	<color name="white">#D2FFFFFF</color>
+
+	<color name="aqua">#E264FFDA</color>
+	<color name="yellow">#C8FFFF00</color>
+	<color name="black">#BE000000</color>
+
+	<color name="calendar_active_month_bg">#fff5f7f9</color>
+	<color name="calendar_bg">#ffffffff</color>
+	<color name="calendar_divider">#ffbababa</color>
+	<color name="calendar_inactive_month_bg">#ffd7d9db</color>
+	<color name="calendar_selected_day_bg">#5421e2</color>
+	<color name="calendar_highlighted_day_bg">#ccffcc</color>
+	<color name="calendar_selected_range_bg">#ff96caff</color>
+	<color name="calendar_text_inactive">#40778088</color>
+	<color name="calendar_text_active">#ff778088</color>
+	<color name="calendar_text_selected">#ffffffff</color>
+	<color name="calendar_text_unselectable">#7f778088</color>
 </resources>

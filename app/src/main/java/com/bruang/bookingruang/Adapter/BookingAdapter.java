@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bruang.bookingruang.Application.App;
@@ -21,9 +22,10 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
     private List<Booking> bookings;
     private LayoutInflater inflater;
     private ItemClickListener itemClickListener;
-
+    private Context context;
     public BookingAdapter(Context context, List<Booking> bookings) {
         this.bookings = bookings;
+        this.context = context;
         this.inflater = LayoutInflater.from(context);
     }
 
@@ -48,7 +50,6 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
         holder.tvRoom.setText(roomName);
         holder.tvTime.setText(booking.getClassSchedule().getClassSession().getTimeLabel());
         holder.tvDate.setText(booking.getFormatedLongDate());
-        holder.tvStatus.setText(booking.getStatus());
         holder.tvRejectMsg.setVisibility(View.GONE);
         holder.tvRejectMsg.setText("");
 
@@ -59,8 +60,17 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
             holder.tvRejectMsg.setText(booking.getMessage());
         }
 
-        holder.tvStatus.setBackgroundColor(status.getStatusColor());
-        holder.statusIndicator.setBackgroundColor(status.getStatusColor());
+        switch (status){
+            case Accepted:
+                holder.tvStatus.setBackground(ContextCompat.getDrawable(this.context, R.drawable.acc));
+                break;
+            case Pending:
+                holder.tvStatus.setBackground(ContextCompat.getDrawable(this.context, R.drawable.pending));
+                break;
+            default:
+                holder.tvStatus.setBackground(ContextCompat.getDrawable(this.context, R.drawable.reject));
+        }
+
     }
 
     @Override
@@ -83,7 +93,6 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView tvTitle, tvRoom, tvTime, tvDate, tvStatus, tvRejectMsg;
-        View statusIndicator;
 
         ViewHolder(View view) {
             super(view);
@@ -93,7 +102,6 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
             tvDate  = view.findViewById(R.id.tvDate);
             tvStatus = view.findViewById(R.id.tvStatus);
             tvRejectMsg = view.findViewById(R.id.tvRejectedMsg);
-            statusIndicator = view.findViewById(R.id.indicatorView);
             view.setOnClickListener(this);
         }
 

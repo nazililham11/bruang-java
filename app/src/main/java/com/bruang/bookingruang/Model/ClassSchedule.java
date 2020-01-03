@@ -1,9 +1,12 @@
 package com.bruang.bookingruang.Model;
 
+import android.text.format.DateUtils;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.time.DayOfWeek;
+import java.util.Date;
 
 public class ClassSchedule {
 
@@ -22,6 +25,10 @@ public class ClassSchedule {
     @SerializedName("day")
     @Expose
     private Integer day;
+
+    @SerializedName("date")
+    @Expose
+    private String date;
 
     @SerializedName("created_at")
     @Expose
@@ -71,6 +78,14 @@ public class ClassSchedule {
         this.day = day;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     public String getCreatedAt() {
         return createdAt;
     }
@@ -102,6 +117,5 @@ public class ClassSchedule {
     public void setClassSession(ClassSession classSession) {
         this.classSession = classSession;
     }
-
 
 }

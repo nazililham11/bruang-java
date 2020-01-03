@@ -14,7 +14,10 @@
 		android:supportsRtl="true"
 		android:theme="@style/AppTheme"
 		>
-		<activity android:name=".View.BookingDetailsActivity"></activity>
+		<activity android:name=".View.NewBookingDetails"></activity>
+		<activity android:name=".View.AvailableRoomListActivity" />
+		<activity android:name=".View.SelectDatesActivity" />
+		<activity android:name=".View.BookingDetailsActivity" />
 		<activity
 			android:name=".View.HomeActivity"
 			android:label="@string/title_activity_home"

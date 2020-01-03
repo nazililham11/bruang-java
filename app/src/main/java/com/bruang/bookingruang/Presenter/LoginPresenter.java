@@ -1,37 +1,26 @@
 package com.bruang.bookingruang.Presenter;
 
-import android.content.SharedPreferences;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
 import com.bruang.bookingruang.Application.App;
+import com.bruang.bookingruang.Contract.LoginContract;
 import com.bruang.bookingruang.Enum.LoginError;
 import com.bruang.bookingruang.Model.User;
 import com.bruang.bookingruang.POJO.LoginResponse;
 import com.bruang.bookingruang.Rest.ApiClient;
 import com.bruang.bookingruang.Rest.ApiInterface;
-import com.bruang.bookingruang.View.ILoginView;
 
-public class LoginPresenter {
+public class LoginPresenter implements LoginContract.Presenter {
 
-    private ILoginView loginView;
-    private static final String preferenceName = "AppPref";
+    private LoginContract.View loginView;
     private ApiInterface mApiInterface;
 
-    //Shared Preferences
-    SharedPreferences pref;
-    SharedPreferences.Editor editor;
-
-    public LoginPresenter(ILoginView loginView) {
+    public LoginPresenter(LoginContract.View loginView) {
         this.loginView = loginView;
-
-        pref = loginView
-                .getApplicationContext()
-                .getSharedPreferences(preferenceName, 0);
-
-        editor = pref.edit();
-
         mApiInterface = ApiClient.getClient().create(ApiInterface.class);
 
     }
@@ -46,19 +35,16 @@ public class LoginPresenter {
         switch (error){
             case UsernameEmptyError:
             case UsernameLengthError:
-            case UsernameWrongError:
                 loginView.setUsernameError(error);
                 return;
             case PasswordEmptyError:
             case PasswordLengthError:
-            case PasswordWrongError:
                 loginView.setPasswordError(error);
                 return;
         }
-        login(user.getUser_id(), user.getPassword());
-//        loginView.onLoginSuccess();
-    }
 
+        login(user.getUser_id(), user.getPassword());
+    }
 
     public void login(String username, String password) {
 
@@ -66,27 +52,28 @@ public class LoginPresenter {
 
         loginCall.enqueue(new retrofit2.Callback<LoginResponse>() {
             @Override
-            public void onResponse(retrofit2.Call<LoginResponse> call, retrofit2.Response<LoginResponse>
-                    response) {
+            public void onResponse(@NonNull retrofit2.Call<LoginResponse> call,
+                                   @NonNull retrofit2.Response<LoginResponse> response) {
+
                 if (response.isSuccessful()){
                     if (response.body().getStatus().equals("success")){
-                        User user = response.body().getUser();
-                        App.setActiveUser(user);
-                        String msg = "Welcome " + user.getName();
-                        Log.d("Response", msg);
-                        Toast.makeText(App.getInstance().getApplicationContext(), msg, Toast.LENGTH_LONG);
+                        App.setActiveUser(response.body().getUser());
                         loginView.onLoginSuccess();
+                        return;
+
                     } else {
                         String message = response.body().getMessage();
-                        if (!TextUtils.isEmpty(message)) {
-                            Toast.makeText(App.getInstance().getApplicationContext(), message, Toast.LENGTH_LONG);
-                        }
-                        loginView.onLoginFailed();
+
+                        if (TextUtils.equals(message, "user_id"))
+                            loginView.setUsernameError(LoginError.UsernameWrongError);
+                        else if (TextUtils.equals(message, "password"));
+                            loginView.setPasswordError(LoginError.UsernameWrongError);
+
                     }
                 } else {
                     Log.d("Response", "Failed...!!");
-                    loginView.onLoginFailed();
                 }
+                loginView.onLoginFailed();
             }
 
             @Override

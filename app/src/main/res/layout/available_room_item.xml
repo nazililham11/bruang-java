@@ -2,11 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="100dp"
+	android:layout_width="match_parent"
+	android:layout_height="100dp"
 	android:maxHeight="100dp"
+	android:background="@drawable/layer"
 	android:paddingRight="10dp"
 	android:paddingLeft="10dp"
+	android:layout_marginBottom="10dp"
 	>
 
 	<LinearLayout
@@ -29,6 +31,7 @@
 			android:textAllCaps="true"
 			android:textSize="15sp"
 			android:textStyle="bold"
+			android:textColor="@color/white"
 			android:text="SUNDAY"
 			android:layout_gravity="center"
 			/>
@@ -54,6 +57,7 @@
 			android:textAlignment="center"
 			android:textAllCaps="true"
 			android:textSize="15dp"
+			android:textColor="@color/white"
 			android:layout_gravity="center"
 			android:textStyle="bold"
 			/>
@@ -66,7 +70,7 @@
 		android:id="@+id/separator1"
 		android:layout_width="5dp"
 		android:layout_height="match_parent"
-		android:background="@android:color/darker_gray"
+		android:background="@color/colorPrimary"
 		android:layout_marginTop="10dp"
 		android:layout_marginBottom="10dp"
 		app:layout_constraintStart_toEndOf="@id/layoutDate"
@@ -76,9 +80,10 @@
 
 	<LinearLayout
 		android:layout_width="0dp"
-		android:layout_height="wrap_content"
+		android:layout_height="match_parent"
 		android:layout_weight="1"
 		android:orientation="vertical"
+		android:background="@drawable/bg_login"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toEndOf="@id/separator1"
@@ -93,6 +98,7 @@
 			android:layout_marginLeft="15dp"
 			android:layout_marginRight="15dp"
 			android:layout_weight="1"
+			android:layout_marginTop="20dp"
 			android:text="Ruang 5.5.5"
 			android:textAllCaps="true"
 			android:textSize="20sp"
@@ -105,13 +111,15 @@
 			android:layout_height="wrap_content"
 			android:layout_marginStart="15dp"
 			android:layout_marginTop="10dp"
-			android:background="@android:color/darker_gray"
-			android:paddingLeft="5dp"
-			android:paddingRight="5dp"
+			android:background="@drawable/btn_login"
+			android:paddingLeft="10dp"
+			android:paddingRight="10dp"
+			android:paddingTop="3dp"
+			android:paddingBottom="3dp"
+			android:layout_marginBottom="20dp"
 			android:text="07:00 - 08:40"
 			android:textColor="@android:color/white"
-			android:textSize="15sp"
-			/>
+			android:textSize="15sp" />
 	</LinearLayout>
 
 	<View
