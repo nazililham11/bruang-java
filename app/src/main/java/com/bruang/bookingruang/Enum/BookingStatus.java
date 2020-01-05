@@ -3,6 +3,11 @@ package com.bruang.bookingruang.Enum;
 import android.graphics.Color;
 import android.text.TextUtils;
 
+import androidx.core.content.ContextCompat;
+
+import com.bruang.bookingruang.Application.App;
+import com.bruang.bookingruang.R;
+
 public enum BookingStatus {
     Accepted("Accepted"),
     Rejected("Rejected"),
@@ -14,9 +19,18 @@ public enum BookingStatus {
         this.bookingStatus = bookingStatus;
     }
 
+    public static String getStatusLabel(BookingStatus status){
+        switch (status){
+            case Accepted:
+                return App.getResourses().getString(R.string.booking_status_accepted_label);
+            case Pending:
+                return App.getResourses().getString(R.string.booking_status_pending_label);
+            default:
+                return App.getResourses().getString(R.string.booking_status_rejected_label);
+        }
+    }
+
     public static BookingStatus getBookingStatus(String status){
-        if (status == null)
-            return Rejected;
 
         if (TextUtils.equals(status.toLowerCase(), "accepted"))
             return BookingStatus.Accepted;
