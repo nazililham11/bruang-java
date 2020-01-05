@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.bruang.bookingruang.Enum.BookingStatus;
 import com.bruang.bookingruang.Model.Booking;
@@ -38,22 +39,35 @@ public class BookingDetailsActivity extends AppCompatActivity {
         tvLongDate = findViewById(R.id.tvLongDate);
         tvRoom     = findViewById(R.id.tvRoom);
         tvStatus   = findViewById(R.id.tvStatus);
-//        tvDate     = findViewById(R.id.tvDate);
         tvTime     = findViewById(R.id.tvTime);
     }
 
     private void showBooking(Booking booking) {
         if (booking == null)
             return;
+
         BookingStatus status = BookingStatus.getBookingStatus(booking.getStatus());
 
         tvTitle.setText(booking.getTitle());
         tvLongDate.setText(booking.getFormatedLongDate());
         tvRoom.setText(booking.getClassSchedule().getRoom().getFullRoomNumber());
-        tvStatus.setText(booking.getStatus());
-        tvStatus.setTextColor(status.getStatusColor());
-//        tvDate.setText(booking.getFormatedShortDate());
+        tvStatus.setText(BookingStatus.getStatusLabel(status));
+        changeStatusDrawable(status);
         tvTime.setText(booking.getClassSchedule().getClassSession().getTimeLabel());
+
+    }
+
+    private void changeStatusDrawable(BookingStatus status){
+        switch (status){
+            case Accepted:
+                tvStatus.setBackground(ContextCompat.getDrawable(this, R.drawable.acc));
+                break;
+            case Pending:
+                tvStatus.setBackground(ContextCompat.getDrawable(this, R.drawable.pending));
+                break;
+            default:
+                tvStatus.setBackground(ContextCompat.getDrawable(this, R.drawable.reject));
+        }
 
     }
 }
