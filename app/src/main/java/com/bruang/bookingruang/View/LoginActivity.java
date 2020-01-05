@@ -5,17 +5,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bruang.bookingruang.Application.App;
 import com.bruang.bookingruang.Contract.LoginContract;
 import com.bruang.bookingruang.Enum.LoginError;
 import com.bruang.bookingruang.Model.User;
 import com.bruang.bookingruang.Presenter.LoginPresenter;
 import com.bruang.bookingruang.R;
+import com.bruang.bookingruang.Util.UserPreference;
 
 public class LoginActivity extends AppCompatActivity implements LoginContract.View {
 
@@ -83,7 +86,12 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
     public void onLoginSuccess() {
         btnLogin.setEnabled(true);
-        navigateToHome();
+        if (!TextUtils.isEmpty(App.getActiveUser().getToken())){
+            UserPreference preference = new UserPreference(this);
+            preference.setUserToken(App.getActiveUser().getToken());
+            navigateToHome();
+        }
+        Toast.makeText(this, "An Error Occured, Please Login Again", Toast.LENGTH_LONG);
         etPassword.setText("");
     }
 
