@@ -1,10 +1,10 @@
 package com.bruang.bookingruang.Rest;
 
-import com.bruang.bookingruang.Model.Room;
 import com.bruang.bookingruang.POJO.BookingsResponse;
 import com.bruang.bookingruang.POJO.CreateBookingResponse;
 import com.bruang.bookingruang.POJO.LoginResponse;
 import com.bruang.bookingruang.POJO.RoomsResponse;
+import com.bruang.bookingruang.POJO.UserDetailResponse;
 
 import java.util.List;
 
@@ -22,13 +22,15 @@ public interface ApiInterface {
     Call<LoginResponse> postLogin(@Field("user_id") String user_id,
                                   @Field("password") String password);
 
+    @GET("details")
+    Call<UserDetailResponse> getUserDetails();
 
     @Headers({
         "Accept: application/json",
         "Content-Type: application/x-www-form-urlencoded",
         "User-Agent: BRUANG"
     })
-    @GET("bookings")
+    @GET("booking")
     Call<BookingsResponse> getBookings(@Header("Authorization") String authorization);
 
 
@@ -38,7 +40,7 @@ public interface ApiInterface {
 
 
     @FormUrlEncoded
-    @POST("createbooking")
+    @POST("booking/create")
     Call<CreateBookingResponse> postBooking(@Field("class_schedule_id") int class_schedule_id,
                                             @Field("title") String title,
                                             @Field("date") String date,
