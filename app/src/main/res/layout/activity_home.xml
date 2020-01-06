@@ -11,13 +11,13 @@
 	<include layout="@layout/content_home" />
 
 
-	<com.google.android.material.floatingactionbutton.FloatingActionButton
+<!--	<com.google.android.material.floatingactionbutton.FloatingActionButton-->
 
-	<!--		android:id="@+id/add"-->
+<!--			android:id="@+id/add"-->
 <!--		android:layout_width="wrap_content"-->
 <!--		android:layout_height="wrap_content"-->
 <!--		android:layout_gravity="bottom|end"-->
 <!--		android:layout_margin="60dp"-->
 <!--		app:srcCompat="@android:drawable/ic_input_add" />-->
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+<!--</androidx.coordinatorlayout.widget.CoordinatorLayout>-->

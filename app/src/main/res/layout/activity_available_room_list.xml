@@ -35,7 +35,7 @@
 
 			android:fontFamily="@font/msj"
 			android:textColor="@color/white"
-			android:textSize="30dp">
+			android:textSize="25dp">
 
 		</TextView>
 

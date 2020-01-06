@@ -25,6 +25,7 @@
 		<LinearLayout
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
+			android:gravity=""
 			android:background="@drawable/layerdark">
 
 			<Button
@@ -32,22 +33,20 @@
 				android:layout_width="35dp"
 				android:layout_height="35dp"
 				android:layout_marginStart="10dp"
-				android:layout_marginTop=""
-				android:layout_marginBottom="25dp"
-				android:background="@drawable/black_24dp">
+				android:layout_marginBottom="18dp"
+				android:background="@drawable/black_24dp"/>
 
 			<TextView
 			android:layout_width="0dp"
-				android:layout_weight=".8"
+			android:layout_weight=".8"
 			android:layout_height="match_parent"
-			android:text="List"
-			android:gravity="center"
-			android:layout_marginEnd=""
+			android:text="Booking List"
+			android:textAlignment="center"
 			android:fontFamily="@font/msj"
 			android:textStyle=""
-			android:textSize="30sp"
+			android:textSize="25sp"
 			android:textColor="@color/white"
-			>
+			/>
 
 			<Button
 				android:id="@+id/btnMenu"
