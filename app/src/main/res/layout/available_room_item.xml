@@ -6,9 +6,12 @@
 	android:layout_height="100dp"
 	android:maxHeight="100dp"
 	android:background="@drawable/layer"
-	android:paddingRight="10dp"
+	android:paddingRight="dp"
+	android:layout_marginStart="20dp"
+	android:layout_marginEnd="20dp"
 	android:paddingLeft="10dp"
 	android:layout_marginBottom="10dp"
+	android:layout_marginTop="10dp"
 	>
 
 	<LinearLayout
@@ -93,13 +96,14 @@
 		<TextView
 			android:id="@+id/tvRoom"
 			android:layout_width="match_parent"
-			android:layout_height="0dp"
+			android:layout_height="wrap_content"
 			android:layout_gravity="center"
 			android:layout_marginLeft="15dp"
 			android:layout_marginRight="15dp"
 			android:layout_weight="1"
-			android:layout_marginTop="20dp"
+			android:layout_marginTop="10dp"
 			android:text="Ruang 5.5.5"
+			android:fontFamily="@font/msj"
 			android:textAllCaps="true"
 			android:textSize="20sp"
 			/>

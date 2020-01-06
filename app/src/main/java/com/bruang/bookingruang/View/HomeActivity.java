@@ -11,12 +11,16 @@ import com.bruang.bookingruang.Presenter.HomePresenter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -79,5 +83,28 @@ public class HomeActivity extends AppCompatActivity implements IHomeView,
         adapter.setClickListener(this);
 
         recyclerView.setAdapter(adapter);
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.coba, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.add:
+                Toast.makeText(this, "Add selected", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.exit:
+                Toast.makeText(this, "Exit Selected", Toast.LENGTH_SHORT).show();
+                return true;
+
+                default:
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

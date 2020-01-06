@@ -10,6 +10,7 @@
 	android:background="@color/colorPrimaryDark"
 	>
 
+
 	<LinearLayout
 		android:background="@drawable/layer"
 		android:layout_width="match_parent"
@@ -17,25 +18,53 @@
 		android:layout_marginTop="20dp"
 		android:layout_marginStart="20dp"
 		android:layout_marginEnd="20dp"
-		android:layout_marginBottom="30dp"
+		android:layout_marginBottom="20dp"
 		android:padding="20dp"
 		android:orientation="vertical">
 
-		<TextView
+		<LinearLayout
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
+			android:background="@drawable/layerdark">
+
+			<Button
+				android:id="@+id/btnBack"
+				android:layout_width="35dp"
+				android:layout_height="35dp"
+				android:layout_marginStart="10dp"
+				android:layout_marginTop=""
+				android:layout_marginBottom="25dp"
+				android:background="@drawable/black_24dp">
+
+			<TextView
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
 			android:text="List"
+			android:gravity="center"
+			android:layout_marginEnd="40dp"
+			android:fontFamily="@font/msj"
+			android:textStyle=""
 			android:textSize="30sp"
 			android:textColor="@color/white"
 			/>
+
+			<Button
+				android:layout_width="35dp"
+				android:layout_height="35dp"
+				android:background="@drawable/ic_menu"/>
+
+
+
+		</LinearLayout>
 
 
 		<androidx.recyclerview.widget.RecyclerView
 			android:id="@+id/rvBookings"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
-			android:layout_marginTop="10dp"
+			android:layout_marginTop="30dp"
 			/>
+
 
 	</LinearLayout>
 
