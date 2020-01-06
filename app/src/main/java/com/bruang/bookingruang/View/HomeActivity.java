@@ -23,6 +23,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import com.bruang.bookingruang.R;
@@ -30,12 +31,13 @@ import com.google.gson.Gson;
 
 import java.util.List;
 
-public class HomeActivity extends AppCompatActivity implements IHomeView,
+public class HomeActivity<btnMenu> extends AppCompatActivity implements IHomeView,
         BookingAdapter.ItemClickListener {
 
     private BookingAdapter adapter;
     private HomePresenter presenter;
     private Button btnNewBooking;
+    private Button btnMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,30 +83,49 @@ public class HomeActivity extends AppCompatActivity implements IHomeView,
 
         adapter = new BookingAdapter(this, bookingList);
         adapter.setClickListener(this);
-
         recyclerView.setAdapter(adapter);
+
+        btnMenu = (Button) findViewById(R.id.btnMenu);
+        btnMenu.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                //Creating the instance of PopupMenu
+                PopupMenu popup = new PopupMenu(HomeActivity.this, btnMenu);
+                //Inflating the Popup using xml file
+                popup.getMenuInflater().inflate(R.menu.coba, popup.getMenu());
+
+                //registering popup with OnMenuItemClickListener
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    public boolean onMenuItemClick(MenuItem item) {
+                        Toast.makeText(HomeActivity.this, "You Clicked : " + item.getTitle(), Toast.LENGTH_SHORT).show();
+                        return true;
+                    }
+                });
+                popup.show();//showing popup menu }
+            }
+        });//closing the setOnClickListener method
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.coba, menu);
-        return true;
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        MenuInflater inflater = getMenuInflater();
+//        inflater.inflate(R.menu.coba, menu);
+//        return true;
+//    }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.add:
-                Toast.makeText(this, "Add selected", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.exit:
-                Toast.makeText(this, "Exit Selected", Toast.LENGTH_SHORT).show();
-                return true;
-
-                default:
-        }
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+//        switch (item.getItemId()){
+//            case R.id.add:
+//                Toast.makeText(this, "Add selected", Toast.LENGTH_SHORT).show();
+//                return true;
+//            case R.id.exit:
+//                Toast.makeText(this, "Exit Selected", Toast.LENGTH_SHORT).show();
+//                return true;
+//
+//                default:
+//        }
+//        return super.onOptionsItemSelected(item);
 }

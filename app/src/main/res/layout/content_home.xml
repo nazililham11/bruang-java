@@ -37,11 +37,12 @@
 				android:background="@drawable/black_24dp">
 
 			<TextView
-			android:layout_width="match_parent"
+			android:layout_width="0dp"
+				android:layout_weight=".8"
 			android:layout_height="match_parent"
 			android:text="List"
 			android:gravity="center"
-			android:layout_marginEnd="40dp"
+			android:layout_marginEnd=""
 			android:fontFamily="@font/msj"
 			android:textStyle=""
 			android:textSize="30sp"
@@ -49,12 +50,11 @@
 			>
 
 			<Button
-				android:layout_width="5dp"
-				android:layout_height="wrap_content"
-				android:layout_marginEnd="60dp"
+				android:id="@+id/btnMenu"
+				android:layout_width="35dp"
+				android:layout_height="35dp"
+				android:layout_marginEnd="10dp"
 				android:background="@drawable/ic_menu" />
-
-
 
 
 		</LinearLayout>
