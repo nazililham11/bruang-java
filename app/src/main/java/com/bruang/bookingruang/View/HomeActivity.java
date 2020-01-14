@@ -6,20 +6,14 @@ import android.os.Bundle;
 import com.bruang.bookingruang.Adapter.BookingAdapter;
 import com.bruang.bookingruang.Application.App;
 import com.bruang.bookingruang.Model.Booking;
-import com.bruang.bookingruang.Model.Room;
 import com.bruang.bookingruang.Presenter.HomePresenter;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
+import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -34,6 +28,8 @@ import java.util.List;
 public class HomeActivity<btnMenu> extends AppCompatActivity implements IHomeView,
         BookingAdapter.ItemClickListener {
 
+    private SwipeRefreshLayout refreshLayout;
+    private boolean doubleBackToExitPressedOnce;
     private BookingAdapter adapter;
     private HomePresenter presenter;
     private Button btnNewBooking;
@@ -44,25 +40,78 @@ public class HomeActivity<btnMenu> extends AppCompatActivity implements IHomeVie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        FloatingActionButton fab = findViewById(R.id.add);
-        fab.setOnClickListener(v -> newBooking());
+        refreshLayout = findViewById(R.id.refreshLayout);
+        refreshLayout.setOnRefreshListener(this::refresh);
+
+        btnMenu = findViewById(R.id.btnMenu);
+        btnMenu.setOnClickListener(v -> onMenuClick());
 
         presenter = new HomePresenter(this);
+
+        refresh();
+    }
+    private void onMenuClick(){
+        PopupMenu popup = new PopupMenu(HomeActivity.this, btnMenu);
+        popup.getMenuInflater().inflate(R.menu.home_menu, popup.getMenu());
+
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.newBooking:
+                        newBooking();
+                        return true;
+                    case R.id.refresh:
+                        refresh();
+                        return true;
+                    case R.id.logout:
+                        logout();
+                        return true;
+                    case R.id.exit:
+                        finishAffinity();
+                        System.exit(0);
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+        });
+        popup.show();
+
+    }
+
+    private void refresh() {
         presenter.getBookingList(App.getActiveUser());
+    }
+
+    private void logout() {
+
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        if (doubleBackToExitPressedOnce) {
+            finishAffinity();
+            System.exit(0);
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+
+        Toast.makeText(this,
+                getString(R.string.back_twice_to_exit_label),
+                Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(() -> doubleBackToExitPressedOnce=false, 2000);
     }
 
     private void newBooking() {
         startActivity(new Intent(this, SelectDatesActivity.class));
+        finish();
     }
 
     @Override
     public void onItemClick(View view, int position) {
-//        Toast.makeText(this,
-//                String.format("You clicked %s on row number %d",
-//                        adapter.getItem(position).getTitle(),
-//                        position),
-//                Toast.LENGTH_SHORT).show();
-
         Booking booking = adapter.getItem(position);
 
         Gson gson = new Gson();
@@ -70,8 +119,6 @@ public class HomeActivity<btnMenu> extends AppCompatActivity implements IHomeVie
 
         Intent intent = new Intent(this, BookingDetailsActivity.class);
         intent.putExtra("BookingJSON", bookingAsJson);
-
-        Log.d("GEt Booking", "Completed");
         startActivity(intent);
 
     }
@@ -85,47 +132,6 @@ public class HomeActivity<btnMenu> extends AppCompatActivity implements IHomeVie
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
 
-        btnMenu = (Button) findViewById(R.id.btnMenu);
-        btnMenu.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                //Creating the instance of PopupMenu
-                PopupMenu popup = new PopupMenu(HomeActivity.this, btnMenu);
-                //Inflating the Popup using xml file
-                popup.getMenuInflater().inflate(R.menu.coba, popup.getMenu());
-
-                //registering popup with OnMenuItemClickListener
-                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                    public boolean onMenuItemClick(MenuItem item) {
-                        Toast.makeText(HomeActivity.this, "You Clicked : " + item.getTitle(), Toast.LENGTH_SHORT).show();
-                        return true;
-                    }
-                });
-                popup.show();//showing popup menu }
-            }
-        });//closing the setOnClickListener method
+        refreshLayout.setRefreshing(false);
     }
-
-
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        MenuInflater inflater = getMenuInflater();
-//        inflater.inflate(R.menu.coba, menu);
-//        return true;
-//    }
-
-//    @Override
-//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-//        switch (item.getItemId()){
-//            case R.id.add:
-//                Toast.makeText(this, "Add selected", Toast.LENGTH_SHORT).show();
-//                return true;
-//            case R.id.exit:
-//                Toast.makeText(this, "Exit Selected", Toast.LENGTH_SHORT).show();
-//                return true;
-//
-//                default:
-//        }
-//        return super.onOptionsItemSelected(item);
 }

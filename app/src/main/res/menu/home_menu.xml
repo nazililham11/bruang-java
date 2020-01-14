@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/newBooking"
+        android:title="@string/menu_new_booking_label" />
+    <item
+        android:id="@+id/refresh"
+        android:title="@string/menu_refresh_label"/>
+    <item
+        android:id="@+id/logout"
+        android:title="@string/menu_logout_label"/>
+    <item
+        android:id="@+id/exit"
+        android:title="@string/menu_exit_label"/>
+
+</menu>

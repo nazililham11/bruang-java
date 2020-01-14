@@ -32,5 +32,16 @@
 	<string name="error_sunday_selected_date">Can\'t choose Sunday</string>
 
 	<string name="back_twice_to_exit_label">Please click BACK again to exit</string>
+	<string name="booking_list_label">Booking List</string>
+	<string name="debug_booking_list_title_label">Kecerdasan Buatan S1-IF13</string>
+	<string name="debug_booking_list_room_label">Ruang 5.2.3</string>
+	<string name="debug_booking_list_date_label">25 Desember 2020</string>
+	<string name="debug_booking_list_reject_message">Rejected Message</string>
+	<string name="debug_booking_list_time_label">07:00 - 08:40</string>
+	<string name="debug_booking_list_label">Booking List</string>
+	<string name="menu_new_booking_label">New Booking</string>
+	<string name="menu_refresh_label">Refresh</string>
+	<string name="menu_logout_label">Logout</string>
+	<string name="menu_exit_label">Exit</string>
 
 </resources>

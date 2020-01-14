@@ -10,63 +10,68 @@
 	android:background="@color/colorPrimaryDark"
 	>
 
-
-	<LinearLayout
-		android:background="@drawable/layer"
+	<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+		android:id="@+id/refreshLayout"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		android:layout_marginTop="20dp"
-		android:layout_marginStart="20dp"
-		android:layout_marginEnd="20dp"
-		android:layout_marginBottom="20dp"
-		android:padding="20dp"
-		android:orientation="vertical">
+		android:padding="10dp"
+		>
 
 		<LinearLayout
+			android:background="@drawable/layer"
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:gravity=""
-			android:background="@drawable/layerdark">
-
-			<Button
-				android:id="@+id/btnBack"
-				android:layout_width="35dp"
-				android:layout_height="35dp"
-				android:layout_marginStart="10dp"
-				android:layout_marginBottom="18dp"
-				android:background="@drawable/black_24dp"/>
-
-			<TextView
-			android:layout_width="0dp"
-			android:layout_weight=".8"
 			android:layout_height="match_parent"
-			android:text="Booking List"
-			android:textAlignment="center"
-			android:fontFamily="@font/msj"
-			android:textStyle=""
-			android:textSize="25sp"
-			android:textColor="@color/white"
-			/>
+			android:orientation="vertical">
 
-			<Button
-				android:id="@+id/btnMenu"
-				android:layout_width="35dp"
-				android:layout_height="35dp"
-				android:layout_marginEnd="10dp"
-				android:background="@drawable/ic_menu" />
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:padding="10dp"
+				android:background="@drawable/layerdark">
+
+				<Button
+					android:id="@+id/btnBack"
+					android:layout_width="35dp"
+					android:layout_height="35dp"
+					android:layout_gravity="center"
+					android:visibility="gone"
+					android:background="@drawable/black_24dp"/>
+
+				<TextView
+					android:layout_width="0dp"
+					android:layout_height="35dp"
+					android:layout_weight="1"
+					android:text="@string/debug_booking_list_label"
+					android:textAlignment="center"
+					android:fontFamily="@font/msj"
+					android:textSize="25sp"
+					android:layout_gravity="center"
+					android:textColor="@color/white"
+					/>
+
+				<Button
+					android:id="@+id/btnMenu"
+					android:layout_width="35dp"
+					android:layout_height="35dp"
+					android:layout_gravity="center"
+					android:background="@drawable/ic_menu" />
+
+
+			</LinearLayout>
+
+
+			<androidx.recyclerview.widget.RecyclerView
+				android:id="@+id/rvBookings"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_marginTop="10dp"
+				android:layout_marginBottom="10dp"
+				/>
 
 
 		</LinearLayout>
 
+	</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-		<androidx.recyclerview.widget.RecyclerView
-			android:id="@+id/rvBookings"
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:layout_marginTop="30dp"
-			/>
-
-
-	</LinearLayout>
 
 </LinearLayout>
