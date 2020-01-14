@@ -25,6 +25,10 @@ public interface ApiInterface {
     @GET("details")
     Call<UserDetailResponse> getUserDetails();
 
+    @GET("logout")
+    Call<UserDetailResponse> getLogout();
+
+
     @Headers({
         "Accept: application/json",
         "Content-Type: application/x-www-form-urlencoded",
