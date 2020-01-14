@@ -177,14 +177,14 @@ public class Booking {
     /**Get Formated Short Date Ex: "17 November 2020"*/
     public String getFormatedShortDate(){
         return DateFormat.getDateInstance(DateFormat.MEDIUM)
-                .format(stringToDateConverter(this.date))
+                .format(stringToDateConverter(this.date, "yyyy-MM-dd"))
                 .toString();
     }
 
     /**Get Formated Long Date Ex: Saturday, "17 November 2020"*/
     public String getFormatedLongDate(){
         return DateFormat.getDateInstance(DateFormat.FULL)
-                .format(stringToDateConverter(this.date))
+                .format(stringToDateConverter(this.date, "yyyy-MM-dd"))
                 .toString();
     }
 

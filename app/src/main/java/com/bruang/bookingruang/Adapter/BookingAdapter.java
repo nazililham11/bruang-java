@@ -49,9 +49,9 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
         holder.tvTitle.setText(booking.getTitle());
         holder.tvRoom.setText(roomName);
         holder.tvTime.setText(booking.getClassSchedule().getClassSession().getTimeLabel());
-        holder.tvDate.setText(booking.getFormatedLongDate());
+        holder.tvDate.setText(booking.getFormatedShortDate());
         holder.tvRejectMsg.setVisibility(View.GONE);
-        holder.tvRejectMsg.setText("");
+//        holder.tvRejectMsg.setText("");
 
         BookingStatus status = BookingStatus.getBookingStatus(booking.getStatus());
 
