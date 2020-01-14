@@ -132,6 +132,7 @@
 				android:layout_height="wrap_content"
 				android:text="Ruang Telah di booking"
 				android:textStyle="bold"
+				android:visibility="gone"
 				android:fontFamily="@font/gsans"
 				android:textSize="19dp"
 				android:gravity="center"
