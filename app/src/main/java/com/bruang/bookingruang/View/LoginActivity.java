@@ -64,6 +64,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
     public void navigateToHome() {
         startActivity(new Intent(this, HomeActivity.class));
+        finish();
     }
 
     @Override
