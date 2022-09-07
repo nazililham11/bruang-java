@@ -21,4 +21,4 @@ Menggunakan aplikasi BRUANG menghemat waktu karena user tidak perlu konfirmasi l
 
 # Server Aplikasi
 Server aplikasi dijalankan dengan basis framework laravel dan database MySql.  
-[Halaman Repository Server](https://github.com/nazililham11/bimbel-laravel)
+[Halaman Repository Server](https://github.com/nazililham11/bruang-laravel)
